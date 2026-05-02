@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Metime Space</title>
     <style>
-        /* Tetapan Asas Tema Premium */
         body {
             margin: 0;
             padding: 0;
@@ -15,7 +14,6 @@
             overflow: hidden; 
         }
 
-        /* Header Profesional & Moden */
         header {
             background: linear-gradient(90deg, #13131a 0%, #1c1c28 100%);
             padding: 0 30px;
@@ -27,7 +25,6 @@
             border-bottom: 1px solid #2a2a35;
         }
 
-        /* Logo Metime Space */
         .logo {
             font-size: 24px;
             font-weight: 800;
@@ -37,16 +34,34 @@
             -webkit-text-fill-color: transparent;
             text-transform: uppercase;
             text-decoration: none;
+            cursor: pointer;
         }
 
-        /* Ruang Navigasi Kanan */
         .ruang-kanan {
             display: flex;
             align-items: center;
             gap: 20px;
         }
 
-        /* Design Kotak Pilihan (Dropdown) */
+        .menu-navigasi {
+            display: flex;
+            gap: 20px;
+            margin-right: 15px;
+        }
+
+        .menu-navigasi a {
+            color: #a0aec0;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .menu-navigasi a:hover {
+            color: #ffffff;
+        }
+
         select {
             padding: 8px 15px;
             background-color: #1c1c28;
@@ -70,7 +85,6 @@
             color: white;
         }
 
-        /* Butang Profil */
         .ikon-profil {
             background: linear-gradient(45deg, #2d3748, #4a5568);
             color: white;
@@ -107,30 +121,39 @@
 <body>
 
     <header>
-        <div class="logo">Metime Space</div>
+        <div class="logo" onclick="keLamanUtama()">Metime Space</div>
         
         <div class="ruang-kanan">
-            <!-- Dropdown menu yang disorok nama asal website -->
+            <div class="menu-navigasi">
+                <a onclick="keLamanUtama()">Utama</a>
+            </div>
+
             <select id="pilih-web" onchange="tukarWeb()">
                 <option value="https://kisskh.do/">🎬 Filem & Drama</option>
-                <option value="https://www.mana2.my/section/live-on-tv">📺 Live TV</option>
+                <option value="https://www.mana2.my/section/live-on-tv">📺 Live TV (Malaysia)</option>
+                <option value="https://www.mewatch.sg/live-tv/free-channels">🇸🇬 Live TV (Perlu VPN SG)</option>
+                <!-- Link Famelack ditambah kat sini -->
+                <option value="https://famelack.com/tv">📺 Famelack TV</option>
             </select>
 
-            <!-- Ikon profil -->
             <div class="ikon-profil">H</div>
         </div>
     </header>
 
     <div class="iframe-container">
-        <!-- Iframe yang akan memaparkan pilihan dari dropdown -->
         <iframe id="paparan-movie" src="https://kisskh.do/" sandbox="allow-scripts allow-same-origin allow-forms allow-popups" allowfullscreen></iframe>
     </div>
 
-    <!-- Skrip untuk menukar pautan iframe -->
     <script>
         function tukarWeb() {
             var linkBaru = document.getElementById("pilih-web").value;
             document.getElementById("paparan-movie").src = linkBaru;
+        }
+
+        function keLamanUtama() {
+            var linkAsal = "https://kisskh.do/";
+            document.getElementById("paparan-movie").src = linkAsal;
+            document.getElementById("pilih-web").value = linkAsal;
         }
     </script>
 
