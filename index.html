@@ -77,17 +77,15 @@
         <div class="pilihan-server">
             <label for="pilih-web">Sumber:</label>
             <select id="pilih-web" onchange="tukarWeb()">
+                <!-- Hanya sumber yang disahkan berfungsi diletakkan di sini -->
                 <option value="https://kisskh.do/">KissKH (Drama/Movie)</option>
-                <option value="https://kissasiantv.com.ro/">KissAsian (Drama)</option>
-                <option value="https://dramacool9.com.ro/">Dramacool (Drama)</option>
-                <!-- Pautan FMovies ni mungkin kena ganti dengan link Cloudflare Worker nanti -->
-                <option value="https://ww4.fmovies.co/home/">FMovies (Global)</option>
             </select>
         </div>
     </header>
 
     <div class="iframe-container">
-        <iframe id="paparan-movie" src="https://kisskh.do/" sandbox="allow-scripts allow-same-origin allow-forms" allowfullscreen></iframe>
+        <!-- Sandbox telah dikemas kini dengan allow-popups supaya player video tidak disekat -->
+        <iframe id="paparan-movie" src="https://kisskh.do/" sandbox="allow-scripts allow-same-origin allow-forms allow-popups" allowfullscreen></iframe>
     </div>
 
     <script>
