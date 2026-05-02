@@ -19,7 +19,7 @@
             padding: 10px 20px;
             display: flex;
             align-items: center;
-            justify-content: space-between; /* Asingkan logo kiri, menu kanan */
+            justify-content: space-between;
             box-shadow: 0 2px 5px rgba(0,0,0,0.5);
             height: 50px;
         }
@@ -31,11 +31,10 @@
             text-decoration: none;
         }
 
-        /* Design untuk ruangan pilih web */
         .pilihan-server {
             display: flex;
             align-items: center;
-            gap: 10px; /* Jarak antara teks dan kotak pilihan */
+            gap: 10px;
         }
 
         .pilihan-server label {
@@ -75,28 +74,25 @@
     <header>
         <div class="logo">MYFLIX</div>
         
-        <!-- Bahagian Dropdown untuk pilih website -->
         <div class="pilihan-server">
             <label for="pilih-web">Sumber:</label>
             <select id="pilih-web" onchange="tukarWeb()">
                 <option value="https://kisskh.do/">KissKH (Drama/Movie)</option>
                 <option value="https://kissasiantv.com.ro/">KissAsian (Drama)</option>
+                <option value="https://dramacool9.com.ro/">Dramacool (Drama)</option>
+                <!-- Pautan FMovies ni mungkin kena ganti dengan link Cloudflare Worker nanti -->
                 <option value="https://ww4.fmovies.co/home/">FMovies (Global)</option>
             </select>
         </div>
     </header>
 
     <div class="iframe-container">
-        <!-- Iframe yang akan berubah ikut pilihan user -->
         <iframe id="paparan-movie" src="https://kisskh.do/" sandbox="allow-scripts allow-same-origin allow-forms" allowfullscreen></iframe>
     </div>
 
-    <!-- Skrip untuk tukar link iframe bila user buat pilihan -->
     <script>
         function tukarWeb() {
-            // Ambil nilai (link) dari dropdown yang user pilih
             var linkBaru = document.getElementById("pilih-web").value;
-            // Tukar source iframe kepada link baru
             document.getElementById("paparan-movie").src = linkBaru;
         }
     </script>
