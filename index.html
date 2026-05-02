@@ -9,7 +9,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #0b0b0e; /* Warna latar belakang yang sangat gelap */
+            background-color: #0b0b0e;
             color: #e2e8f0;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             overflow: hidden; 
@@ -32,7 +32,6 @@
             font-size: 24px;
             font-weight: 800;
             letter-spacing: 1px;
-            /* Kesan warna gradient pada teks */
             background: linear-gradient(45deg, #00f2fe, #4facfe);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -40,28 +39,35 @@
             text-decoration: none;
         }
 
-        /* Ruang Navigasi untuk isi tempat kosong */
+        /* Ruang Navigasi Kanan */
         .ruang-kanan {
             display: flex;
             align-items: center;
-            gap: 30px;
-        }
-
-        .menu-navigasi {
-            display: flex;
             gap: 20px;
         }
 
-        .menu-navigasi a {
-            color: #a0aec0;
-            text-decoration: none;
+        /* Design Kotak Pilihan (Dropdown) */
+        select {
+            padding: 8px 15px;
+            background-color: #1c1c28;
+            color: #ffffff;
+            border: 1px solid #4facfe;
+            border-radius: 8px;
             font-size: 14px;
             font-weight: 600;
-            transition: color 0.3s ease;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s ease;
         }
 
-        .menu-navigasi a:hover {
-            color: #ffffff;
+        select:hover {
+            background-color: #2a2a35;
+            box-shadow: 0 0 8px rgba(79, 172, 254, 0.4);
+        }
+
+        select option {
+            background-color: #13131a;
+            color: white;
         }
 
         /* Butang Profil */
@@ -101,25 +107,32 @@
 <body>
 
     <header>
-        <!-- Nama Website -->
         <div class="logo">Metime Space</div>
         
-        <!-- Elemen untuk elak bahagian kanan nampak kosong -->
         <div class="ruang-kanan">
-            <div class="menu-navigasi">
-                <a href="#">Utama</a>
-                <a href="#">Filem</a>
-                <a href="#">Siri TV</a>
-            </div>
+            <!-- Dropdown menu yang disorok nama asal website -->
+            <select id="pilih-web" onchange="tukarWeb()">
+                <option value="https://kisskh.do/">🎬 Filem & Drama</option>
+                <option value="https://www.mana2.my/section/live-on-tv">📺 Live TV</option>
+            </select>
+
             <!-- Ikon profil -->
             <div class="ikon-profil">H</div>
         </div>
     </header>
 
     <div class="iframe-container">
-        <!-- Pautan terus tanpa dropdown -->
-        <iframe src="https://kisskh.do/" sandbox="allow-scripts allow-same-origin allow-forms allow-popups" allowfullscreen></iframe>
+        <!-- Iframe yang akan memaparkan pilihan dari dropdown -->
+        <iframe id="paparan-movie" src="https://kisskh.do/" sandbox="allow-scripts allow-same-origin allow-forms allow-popups" allowfullscreen></iframe>
     </div>
+
+    <!-- Skrip untuk menukar pautan iframe -->
+    <script>
+        function tukarWeb() {
+            var linkBaru = document.getElementById("pilih-web").value;
+            document.getElementById("paparan-movie").src = linkBaru;
+        }
+    </script>
 
 </body>
 </html>
