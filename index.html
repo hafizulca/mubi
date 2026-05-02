@@ -25,6 +25,26 @@
             border-bottom: 1px solid #2a2a35;
         }
 
+        /* Ruang khas untuk gabungkan ikon rumah dan teks logo */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px; /* Jarak antara ikon dan tulisan */
+            cursor: pointer;
+        }
+
+        /* Design untuk ikon rumah (SVG) */
+        .logo-container svg {
+            width: 28px;
+            height: 28px;
+            fill: #00f2fe; /* Warna cyan ikut tema tulisan */
+            transition: transform 0.3s ease;
+        }
+
+        .logo-container:hover svg {
+            transform: scale(1.1); /* Effect membesar sikit bila hover */
+        }
+
         .logo {
             font-size: 24px;
             font-weight: 800;
@@ -34,7 +54,6 @@
             -webkit-text-fill-color: transparent;
             text-transform: uppercase;
             text-decoration: none;
-            cursor: pointer;
         }
 
         .ruang-kanan {
@@ -121,7 +140,13 @@
 <body>
 
     <header>
-        <div class="logo" onclick="keLamanUtama()">Metime Space</div>
+        <!-- Logo Container dengan ikon rumah -->
+        <div class="logo-container" onclick="keLamanUtama()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+            </svg>
+            <div class="logo">Metime Space</div>
+        </div>
         
         <div class="ruang-kanan">
             <div class="menu-navigasi">
@@ -132,7 +157,6 @@
                 <option value="https://kisskh.do/">🎬 Filem & Drama</option>
                 <option value="https://www.mana2.my/section/live-on-tv">📺 Live TV (Malaysia)</option>
                 <option value="https://www.mewatch.sg/live-tv/free-channels">🇸🇬 Live TV (Perlu VPN SG)</option>
-                <!-- Link Famelack ditambah kat sini -->
                 <option value="https://famelack.com/tv">📺 Famelack TV</option>
             </select>
 
