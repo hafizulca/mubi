@@ -60,7 +60,6 @@
             gap: 25px;
         }
 
-        /* Design Butang Menu Atas */
         .menu-navigasi {
             display: flex;
             gap: 12px;
@@ -126,7 +125,6 @@
 <body>
 
     <header>
-        <!-- Logo Container dengan ikon rumah (klik untuk balik ke asal) -->
         <div class="logo-container" onclick="tukarWeb('https://kisskh.do/')">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
@@ -135,10 +133,13 @@
         </div>
         
         <div class="ruang-kanan">
-            <!-- Menu Navigasi Baru -->
             <div class="menu-navigasi">
+                <!-- Pautan web kekal untuk sumber lain -->
                 <a onclick="tukarWeb('https://kisskh.do/')">🎬 Movie</a>
-                <a onclick="tukarWeb('https://www.mana2.my/section/live-on-tv')">📺 TV Malaysia</a>
+                
+                <!-- Pautan TV Malaysia melalui Cloudflare Worker -->
+                <a onclick="tukarWeb('https://tv-malaysia.letak-nama-cloudflare-kau.workers.dev/section/live-on-tv')">📺 TV Malaysia</a>
+                
                 <a onclick="tukarWeb('https://famelack.com/tv')">📺 Famelack TV</a>
                 <a onclick="tukarWeb('https://radio.garden/')">📻 Radio</a>
             </div>
@@ -148,12 +149,10 @@
     </header>
 
     <div class="iframe-container">
-        <!-- Paparan default bila mula-mula buka -->
         <iframe id="paparan-movie" src="https://kisskh.do/" sandbox="allow-scripts allow-same-origin allow-forms allow-popups" allowfullscreen></iframe>
     </div>
 
     <script>
-        // Fungsi untuk tukar link iframe bila butang ditekan
         function tukarWeb(linkBaru) {
             document.getElementById("paparan-movie").src = linkBaru;
         }
